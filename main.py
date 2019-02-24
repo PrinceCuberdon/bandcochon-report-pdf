@@ -49,8 +49,8 @@ class GeneratePDFHandler(tornado.web.RequestHandler, GeneratePDFHandlerMixin):
             self.write("Need content")
             self.set_status(400)
             return
-
-        content = self.generate_the_pdf_from_body(self.request.body)
+        input_html = self.request.files['content'][0]['body']
+        content = self.generate_the_pdf_from_body(input_html)
 
         self.set_header('Content-Type', 'application/pdf')
         self.write(content)
