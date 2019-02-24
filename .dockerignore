@@ -1,0 +1,14 @@
+.idea
+.pytest_cache
+.features
+.htmlcov
+.coverage
+.coveragerc
+tests
+build.sh
+Dockerfile
+version.json
+__pycache__
+htmlcov
+features
+bin/

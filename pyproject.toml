@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "bandcochon-report-pdf"
+version = "0.1.0"
+description = ""
+authors = ["Prince Cuberdon"]
+
+[tool.poetry.dependencies]
+python = ">=3.6"
+tornado = "^5.1"
+weasyprint = "^45.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^4.3"
+pytest-cov = "^2.6"
+behave = "^1.2"
+requests = "^2.21"
+pypdf2 = "^1.26"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
