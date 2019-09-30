@@ -1,11 +1,10 @@
-"""
+#!/usr/bin/env python3
 
-
-"""
 import io
 import logging
 import os
 import sys
+import time
 
 import tornado.autoreload
 import tornado.ioloop
@@ -13,7 +12,8 @@ import tornado.log
 import tornado.web
 import weasyprint
 
-default_format = '[%(levelname)-6s] %(asctime)s - %(module)-10s: %(message)s'
+default_format = '[%(levelname)-7s] - %(name)20s - ' \
+                 '%(asctime)s - %(module)-20s: %(message)s'
 
 logging.basicConfig(level=logging.INFO,
                     stream=sys.stdout,
@@ -49,11 +49,16 @@ class GeneratePDFHandler(tornado.web.RequestHandler, GeneratePDFHandlerMixin):
             self.write("Need content")
             self.set_status(400)
             return
+
+        start = time.time()
         input_html = self.request.files['content'][0]['body']
         content = self.generate_the_pdf_from_body(input_html)
 
         self.set_header('Content-Type', 'application/pdf')
         self.write(content)
+
+        duration = (time.time() - start) / 1000
+        L.info("Done in %.2f sec." % duration)
 
 
 def main():
