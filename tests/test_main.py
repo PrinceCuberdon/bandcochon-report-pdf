@@ -1,7 +1,10 @@
+import logging
 import unittest
 from unittest.mock import MagicMock
 
 import main
+
+main.L.setLevel(logging.CRITICAL)
 
 
 class TestGeneratePdfMixin(unittest.TestCase):
@@ -27,3 +30,7 @@ class TestGeneratePdfMixin(unittest.TestCase):
         )
 
         self.assertIsInstance(result, bytes)
+
+
+if __name__ == '__main__':
+    unittest.main()
