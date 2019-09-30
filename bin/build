@@ -10,7 +10,8 @@ cat << EOF
             | |
             |_|
 EOF
-app_name=bandcochon-report-pdf
+
+app_name=registry.bandcochon.fr/bandcochon/report
 
 docker build \
     -t ${app_name}:`jq -r .version version.json` \

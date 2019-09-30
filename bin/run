@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+cat << EOF
+
+  _____                       _     _____
+ |  __ \                     | |   |  __ \\
+ | |__) |___ _ __   ___  _ __| |_  | |__) |   _ _ __
+ |  _  // _ \ '_ \ / _ \| '__| __| |  _  / | | | '_ \\
+ | | \ \  __/ |_) | (_) | |  | |_  | | \ \ |_| | | | |
+ |_|  \_\___| .__/ \___/|_|   \__| |_|  \_\__,_|_| |_|
+            | |
+            |_|
+EOF
+
+app_name=registry.bandcochon.fr/bandcochon/report
+
+docker run  --rm -it  ${app_name}:`jq -r .version version.json`
+
